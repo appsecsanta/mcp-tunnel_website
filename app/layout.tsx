@@ -5,9 +5,9 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'LLMPair - Connect Claude to Your Local Machine',
-  description: 'Give Claude access to your local files and terminal. Works with Claude Desktop, iPhone, and claude.ai/code.',
-  keywords: ['Claude', 'AI', 'MCP', 'local', 'tunnel', 'filesystem'],
+  title: 'MCPtunnel - Connect AI to Your Local Machine',
+  description: 'Give ChatGPT and Claude access to your local files and terminal via MCP. Secure tunnel that works everywhere.',
+  keywords: ['MCP', 'ChatGPT', 'Claude', 'AI', 'tunnel', 'local', 'filesystem', 'Model Context Protocol'],
 };
 
 export default function RootLayout({
