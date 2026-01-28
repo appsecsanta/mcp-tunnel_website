@@ -1,34 +1,358 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 245, 245, 245;
+/* Custom Theme - Bun.sh inspired dark theme */
+@theme {
+  /* Colors */
+  --color-bg-primary: #0c0c0c;
+  --color-bg-secondary: #141414;
+  --color-bg-tertiary: #1a1a1a;
+  --color-bg-card: #1c1c1c;
+  --color-bg-hover: #252525;
+
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #a1a1a1;
+  --color-text-muted: #6b6b6b;
+
+  --color-border: #2a2a2a;
+  --color-border-light: #333333;
+
+  --color-cyan: #00d4ff;
+  --color-orange: #E57348;
+  --color-green: #4ade80;
+  --color-purple: #a78bfa;
+
+  /* Fonts - bun.sh style system font stack */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Hack", "Source Code Pro", "SF Mono", "Inconsolata", monospace;
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.6s ease-out;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 17, 24, 39;
-    --background-end-rgb: 17, 24, 39;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Selection */
+::selection {
+  background: var(--color-cyan);
+  color: var(--color-bg-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Component Styles */
+@layer components {
+  /* Primary CTA Button - Orange */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center px-6 py-3 font-semibold rounded-full transition-all duration-150;
+    background: var(--color-orange);
+    color: var(--color-bg-primary);
   }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply relative inline-flex items-center justify-center px-6 py-3 font-semibold rounded-full transition-all duration-150;
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-light);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-text-muted);
+  }
+
+  /* Ghost Button */
+  .btn-ghost {
+    @apply relative inline-flex items-center justify-center px-4 py-2 font-medium transition-all duration-150;
+    color: var(--color-text-secondary);
+  }
+
+  .btn-ghost:hover {
+    color: var(--color-text-primary);
+  }
+
+  /* Card */
+  .card {
+    @apply rounded-xl p-6 transition-all duration-200;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+  }
+
+  .card:hover {
+    border-color: var(--color-border-light);
+    background: var(--color-bg-hover);
+  }
+
+  /* Code Block */
+  .code-block {
+    @apply font-mono text-sm rounded-lg overflow-x-auto;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    padding: 1rem 1.25rem;
+  }
+
+  .code-block code {
+    color: var(--color-text-primary);
+  }
+
+  .code-block .command {
+    color: var(--color-cyan);
+  }
+
+  .code-block .string {
+    color: var(--color-green);
+  }
+
+  .code-block .comment {
+    color: var(--color-text-muted);
+  }
+
+  /* Install Box */
+  .install-box {
+    @apply relative rounded-lg overflow-hidden;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  .install-box .tabs {
+    @apply flex border-b;
+    border-color: var(--color-border);
+  }
+
+  .install-box .tab {
+    @apply px-4 py-2 text-sm font-medium transition-colors;
+    color: var(--color-text-muted);
+  }
+
+  .install-box .tab.active {
+    color: var(--color-orange);
+    border-bottom: 2px solid var(--color-orange);
+    margin-bottom: -1px;
+  }
+
+  .install-box .tab:hover:not(.active) {
+    color: var(--color-text-secondary);
+  }
+
+  /* Badge/Tag */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full;
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  .badge-cyan {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--color-cyan);
+    border-color: rgba(0, 212, 255, 0.3);
+  }
+
+  .badge-orange {
+    background: rgba(229, 115, 72, 0.1);
+    color: var(--color-orange);
+    border-color: rgba(229, 115, 72, 0.3);
+  }
+
+  .badge-green {
+    background: rgba(74, 222, 128, 0.1);
+    color: var(--color-green);
+    border-color: rgba(74, 222, 128, 0.3);
+  }
+
+  /* Section */
+  .section {
+    @apply py-20 md:py-32;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-orange), #ffb347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effects */
+  .glow-cyan {
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 40px rgba(229, 115, 72, 0.15);
+  }
+
+  /* Feature card */
+  .feature-card {
+    @apply relative p-6 rounded-xl transition-all duration-300;
+    background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-secondary) 100%);
+    border: 1px solid var(--color-border);
+  }
+
+  .feature-card:hover {
+    border-color: var(--color-border-light);
+    transform: translateY(-2px);
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, transparent, var(--color-border-light));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .feature-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Stats */
+  .stat-value {
+    @apply font-mono text-4xl md:text-5xl font-bold;
+    background: linear-gradient(135deg, var(--color-text-primary), var(--color-text-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Navigation link - bun.sh style */
+  .nav-link {
+    @apply relative py-2 font-medium transition-colors duration-150;
+    font-size: 1rem;
+    color: var(--color-text-primary);
+  }
+
+  .nav-link:hover {
+    color: var(--color-text-secondary);
+  }
+
+  .nav-link.active {
+    color: var(--color-text-primary);
+  }
+
+  /* Typing cursor */
+  .typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: var(--color-orange);
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+  }
+}
+
+/* Focus states */
+*:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+/* Custom animations */
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+
+/* Testimonial scroll animations - bun.sh style */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 40s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 45s linear infinite;
+}
+
+.testimonial-row {
+  width: max-content;
+}
+
+.testimonial-row:hover {
+  animation-play-state: paused;
 }
