@@ -79,7 +79,7 @@ export default function Home() {
             <div className="hidden md:flex items-center" style={{ gap: '2rem' }}>
               <a href="#features" className="nav-link">Features</a>
               <a href="#install" className="nav-link">Install</a>
-              <a href="https://github.com/appsecsanta/mcp-tunnel" target="_blank" rel="noopener noreferrer" className="nav-link">Docs</a>
+              <Link href="/docs" className="nav-link">Docs</Link>
               <a
                 href="https://github.com/appsecsanta/mcp-tunnel"
                 target="_blank"
@@ -440,7 +440,7 @@ export default function Home() {
             <div>
               <h3 className="font-semibold mb-4" style={{ color: 'var(--color-text-primary)' }}>Resources</h3>
               <ul className="space-y-3 text-sm" style={{ color: 'var(--color-text-muted)' }}>
-                <li><a href="https://github.com/appsecsanta/mcp-tunnel" className="hover:text-[var(--color-text-primary)] transition">Documentation</a></li>
+                <li><Link href="/docs" className="hover:text-[var(--color-text-primary)] transition">Documentation</Link></li>
                 <li><a href="https://github.com/appsecsanta/mcp-tunnel" className="hover:text-[var(--color-text-primary)] transition">GitHub</a></li>
                 <li><a href="https://github.com/appsecsanta/mcp-tunnel/issues" className="hover:text-[var(--color-text-primary)] transition">Issues</a></li>
                 <li><a href="https://github.com/appsecsanta/mcp-tunnel/releases" className="hover:text-[var(--color-text-primary)] transition">Changelog</a></li>
