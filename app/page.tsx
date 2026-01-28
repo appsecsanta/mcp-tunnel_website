@@ -397,7 +397,7 @@ export default function Home() {
             <StepCard
               number={3}
               title="Connect any MCP client to the tunnel URL"
-              code="https://your-tunnel.trycloudflare.com/mcp"
+              code="https://api.mcptunnel.sh/mcp"
               isUrl
             />
           </div>
@@ -426,7 +426,7 @@ export default function Home() {
               <div className="pt-2"><span style={{ color: 'var(--color-cyan)' }}>Aggregating 5 servers → 23 tools, 4 resources</span></div>
               <div><span style={{ color: 'var(--color-text-secondary)' }}>  filesystem__read_file, git__log, postgres__query, ...</span></div>
               <div className="pt-2"><span style={{ color: 'var(--color-cyan)' }}>HTTP server:</span> <span style={{ color: 'var(--color-text-secondary)' }}>http://127.0.0.1:3000/mcp</span></div>
-              <div><span style={{ color: 'var(--color-green)' }}>Tunnel ready:</span> <span style={{ color: 'var(--color-cyan)' }}>https://abc123.trycloudflare.com/mcp</span></div>
+              <div><span style={{ color: 'var(--color-green)' }}>Tunnel ready:</span> <span style={{ color: 'var(--color-cyan)' }}>https://api.mcptunnel.sh/mcp</span></div>
             </div>
           </div>
         </div>
@@ -770,7 +770,7 @@ function HeroDemoCard() {
         { type: 'response', text: 'Creating Cloudflare tunnel...' },
         { type: 'success', text: '✓ Tunnel ready' },
         { type: 'output', text: '' },
-        { type: 'diff-add', text: 'https://abc123.trycloudflare.com/mcp' },
+        { type: 'diff-add', text: 'https://api.mcptunnel.sh/mcp' },
         { type: 'output', text: '' },
         { type: 'response', text: 'Paste this URL in your AI client' },
       ]

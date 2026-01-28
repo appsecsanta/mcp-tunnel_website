@@ -251,7 +251,7 @@ sudo mv mcptunnel /usr/local/bin/`}</CodeBlock>
                   language="text"
                   copied={copied}
                   onCopy={copyToClipboard}
-                >{`https://abc123-random.trycloudflare.com/mcp`}</CodeBlock>
+                >{`https://api.mcptunnel.sh/mcp`}</CodeBlock>
               </StepBlock>
 
               <StepBlock number={3} title="Connect your AI client">
@@ -593,7 +593,7 @@ mcptunnel start --safe-only`}</CodeBlock>
                 description="Web and Desktop app"
                 steps={[
                   'Start mcpTunnel: mcptunnel start',
-                  'Copy the tunnel URL (e.g., https://abc123.trycloudflare.com/mcp)',
+                  'Copy the tunnel URL (e.g., https://api.mcptunnel.sh/mcp)',
                   'In ChatGPT, go to Settings → Connected Apps → Add MCP Server',
                   'Paste the tunnel URL and save',
                 ]}
